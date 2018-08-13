@@ -6,6 +6,7 @@
 
 package Pila;
 
+import Pilas.ListaPila;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -32,6 +33,15 @@ public class PilaTest {
     
     @Before
     public void setUp() {
+    }
+    
+    @Test
+    public void testPushEnPilaVacia(){
+        ListaPila<String> pila = new ListaPila<>();
+        pila.push("Hola");
+        assertEquals("El top no es igual al nodo creado", pila.getTop(), pila.peek());
+        assertEquals("El top incial no es uno", pila.getSize(), 1);
+        assertEquals("El link no es nulo", pila.getTop().getNext(), null);
     }
     
     @After

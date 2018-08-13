@@ -21,6 +21,24 @@ public class ListaPila<U> {
     public boolean IsEmpty(){
         return top == null;
     }
+
+    public Nodo<U> getTop() {
+        return top;
+    }
+
+    public void setTop(Nodo<U> top) {
+        this.top = top;
+    }
+
+    public int getSize() {
+        return Size;
+    }
+
+    public void setSize(int Size) {
+        this.Size = Size;
+    }
+    
+    
     
     public void push(U dato){
         Nodo<U> nuevoNodo = new Nodo<>(dato);
