@@ -16,8 +16,8 @@ import java.io.IOException;
  */
 public class Ejecutable {
     public static void main(String[] args) throws IOException {
-        System.out.println(ListaPila.getString("datos.txt"));
-        if (validarExpresion(ListaPila.getString("datos.txt"))) {
+        System.out.println(getString("datos.txt"));
+        if (validarExpresion(getString("datos.txt"))) {
             System.out.println("esta bien");  
         }else{
             System.out.println("esta mal");
@@ -33,7 +33,7 @@ public class Ejecutable {
             } else {
                 if (actual == '}' || actual == ')'||actual == ']') {
                     anterior = (char)pila.peek().getDato();
-                    if (actual == '{' && anterior == '}' || actual == '(' && anterior == ')' || actual == '[' && anterior == ']') {
+                     if (actual == '}' && anterior == '{' || actual == ')' && anterior == '(' || actual == ']' && anterior == '[') {
                         pila.pull();
                     }
                 }
