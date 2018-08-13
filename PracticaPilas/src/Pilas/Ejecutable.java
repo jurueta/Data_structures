@@ -5,18 +5,52 @@
  */
 package Pilas;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 /**
  *
  * @author Urueta
  */
 public class Ejecutable {
-    public static void main(String[] args) {
-        ListaPila<Integer> pila = new ListaPila<>();
-        pila.push(1);
-        pila.push(2);
-        pila.push(3);
-        pila.push(5);
-        System.out.println(pila.peek());
-        System.out.println(pila);
+    public static void main(String[] args) throws IOException {
+        System.out.println(ListaPila.getString("datos.txt"));
+        if (validarExpresion(ListaPila.getString("datos.txt"))) {
+            System.out.println("esta bien");  
+        }else{
+            System.out.println("esta mal");
+        }
     }
+       public static boolean validarExpresion(String cadena){
+        ListaPila <Character> pila = new ListaPila<>();
+        char actual, anterior;
+        for (int i = 0; i < cadena.length(); i++) {
+        actual = cadena.charAt(i);
+            if (actual == '{' || actual == '('||actual == '[') {
+                pila.push(actual);
+            } else {
+                if (actual == '}' || actual == ')'||actual == ']') {
+                    anterior = (char)pila.peek().getDato();
+                    if (actual == '{' && anterior == '}' || actual == '(' && anterior == ')' || actual == '[' && anterior == ']') {
+                        pila.pull();
+                    }
+                }
+            }
+        }
+       return pila.IsEmpty(); 
+    }
+        public static String getString(String archivo) throws IOException{
+       String dato = null;
+        try {
+           FileReader file = new FileReader(archivo);
+           BufferedReader bufe = new BufferedReader(file);
+           dato = bufe.readLine();
+       } catch (FileNotFoundException ex) {
+           System.out.println("El archivo no se encuentra");
+       }
+       return dato; 
+    }
+      
 }

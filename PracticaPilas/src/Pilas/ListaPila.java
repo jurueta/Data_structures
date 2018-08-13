@@ -5,6 +5,7 @@
  */
 package Pilas;
 
+
 /**
  *
  * @author Urueta
@@ -41,24 +42,7 @@ public class ListaPila<U> {
         return top;
     }
     
-    public static boolean validarExpresion(String cadena){
-        ListaPila <Character> pila = new ListaPila<>();
-        char actual, anterior;
-        for (int i = 0; i < cadena.length(); i++) {
-        actual = cadena.charAt(i);
-            if (actual == '{' || actual == '('||actual == '[') {
-                pila.push(actual);
-            } else {
-                if (actual == '}' || actual == ')'||actual == ']') {
-                    anterior = (char)pila.peek().getDato();
-                    if (actual == '{' && anterior == '}' || actual == '(' && anterior == ')' || actual == '[' && anterior == ']') {
-                        pila.pull();
-                    }
-                }
-            }
-        }
-       return pila.IsEmpty(); 
-    }
+ 
 
     @Override
     public String toString() {
@@ -72,5 +56,6 @@ public class ListaPila<U> {
         Listado += " Y el tamaño es "+Size;
         return Listado;
     }
-      
+    
+   
 }
